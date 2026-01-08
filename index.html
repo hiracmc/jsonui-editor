@@ -1,9 +1,26 @@
 <!doctype html>
 <html>
  <body>
+  <style>
+   #screen {
+    
+   }
+   </style>
+  <div id="screen">
+   <img src="./background.png" width="703px" height="512px">
+  <div id="loot"></div>
+  </div>
  <script>
    const data = {
    	"namespace": "hud",
+
+    "pnz:loot": {
+      "controls": [
+       {
+        "text@hud.text": {}
+       }
+      ]
+    },
    
    	"text": {
    		"type": "label",
@@ -15,6 +32,8 @@
       "shadow": true
    	}
    }
+
+   
    </script>
   </body>
 </html>

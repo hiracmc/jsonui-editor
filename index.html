@@ -3,8 +3,8 @@
  <body>
   <style>
    #screen {
-    width="703px"; 
-    height="512px";
+    width:"703px"; 
+    height:"512px";
    }
    </style>
   <div id="screen">
@@ -33,8 +33,40 @@
       "shadow": true
    	}
    }
+   const loot = document.getElementById("loot");
 
+   const ui_data = data["pnz:loot"]
+   let element = ""
+   ui_data["controls"].forEach(e => {
+    let d = ""
+    if (Object.keys(e)[0].includes("@")) {
+     d = newElement(data[Object.keys(e)[0].split("@")])
+    } else {
+     d = newElement(e[0])
+    }
+    element += `<div>${d}</div>`
+   })
+   loot.innerHTML = element
+  }
+  function newElement(code){
+   let str = ""
+ switch (code.type) {
+  case "label" :
+   str += `<p style="${layoutToCSS(code)}">${code.text}</p>`;
    
+  break;
+ }
+  }
+   function layoutToCSS(code){
+    let ary = [];
+    if (code["offset"]){ ary.push(["left",code["offset"][0]); ary.push(["top",code["offset"][1]) }
+    if (code["size"]){ ary.push(["width",code["size"][0]); ary.push(["height",code["size"][1]) }
+    
+    let str = ""
+    ary.forEach(f => {
+     str += `${f[0]}:${f[1]};`;
+    })
+   }
    </script>
   </body>
 </html>
